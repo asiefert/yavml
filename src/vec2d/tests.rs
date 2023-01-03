@@ -120,7 +120,7 @@ mod tests {
             assert_eq!(vec1, Vec2i::new(3, 3));
         }
 
-        /// Tests that the compiler panics when a vector is divided by zero
+        /// Tests that the compiler panics when a vector is divided by a vector with a value set to zero
         #[test]
         #[should_panic(expected = "attempt to divide by zero")]
         fn test_vec2i_panic_on_div_by_zero() {
@@ -129,6 +129,7 @@ mod tests {
             let _ = vec1 / vec2;
         }
 
+        /// Tests that the compiler panics when a vector is divided by zero
         #[test]
         #[should_panic(expected = "attempt to divide by zero")]
         fn test_vec2i_panic_on_div_by_zero_scalar() {
