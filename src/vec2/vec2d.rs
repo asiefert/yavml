@@ -35,7 +35,7 @@ impl Vec2D {
     /// # Examples:
     ///
     /// ```
-    /// use yavml::vec2::vec2f::Vec2D;
+    /// use yavml::vec2::vec2d::Vec2D;
     /// let vector = Vec2D::new(1.0,1.0);
     /// ```
     pub const fn new(x: f64, y: f64) -> Self {
@@ -49,7 +49,7 @@ impl Vec2D {
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2f::Vec2D;
+    /// use yavml::vec2::vec2d::Vec2D;
     /// let vector = Vec2D::splat(2.0);
     /// assert_eq!(vector,Vec2D::new(2.0,2.0));
     /// ```
@@ -75,7 +75,7 @@ impl Vec2D {
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2f::Vec2D;
+    /// use yavml::vec2::vec2d::Vec2D;
     /// let vector1 = Vec2D::new(2.0,3.0);
     /// let vector2 = Vec2D::new(4.0,5.0);
     /// assert_eq!(vector1.dot(vector2),23.0)
@@ -114,7 +114,7 @@ impl Vec2D {
 
     /// Returns the length of the vector `self`
     pub fn length(self) -> f64 {
-        ((self.dot(self)) as f64).sqrt()
+        (self.dot(self)).sqrt()
     }
 }
 

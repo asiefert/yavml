@@ -1,14 +1,14 @@
 use core::ops::*;
 /// An integer-holding vector with 2 values
 #[derive(Clone, Copy, Default, Debug, PartialEq)]
-pub struct Vec2f32 {
+pub struct Vec2f {
     ///The x value of the vector
     pub x: f32,
     ///The y value of the vector
     pub y: f32,
 }
 
-impl Vec2f32 {
+impl Vec2f {
     /// Vector of all zeros
     pub const ZERO: Self = Self::splat(0.0);
     /// Vector of all ones
@@ -35,11 +35,11 @@ impl Vec2f32 {
     /// # Examples:
     ///
     /// ```
-    /// use yavml::vec2::vec2f32::Vec2f32;
-    /// let vector = Vec2f32::new(1.0,1.0);
+    /// use yavml::vec2::vec2f::Vec2f;
+    /// let vector = Vec2f::new(1.0,1.0);
     /// ```
     pub const fn new(x: f32, y: f32) -> Self {
-        Vec2f32 { x, y }
+        Vec2f { x, y }
     }
     /// Creates a Vector with all elements set to `val`
     ///
@@ -49,9 +49,9 @@ impl Vec2f32 {
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2f32::Vec2f32;
-    /// let vector = Vec2f32::splat(2.0);
-    /// assert_eq!(vector,Vec2f32::new(2.0,2.0));
+    /// use yavml::vec2::vec2f::Vec2f;
+    /// let vector = Vec2f::splat(2.0);
+    /// assert_eq!(vector,Vec2f::new(2.0,2.0));
     /// ```
     pub const fn splat(val: f32) -> Self {
         Self { x: val, y: val }
@@ -69,15 +69,15 @@ impl Vec2f32 {
     ///
     /// # Arguments
     ///
-    /// * `self` - The first `Vec2f32`
+    /// * `self` - The first `Vec2f`
     ///
-    /// * `rhs` - The second `Vec2f32`
+    /// * `rhs` - The second `Vec2f`
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2f32::Vec2f32;
-    /// let vector1 = Vec2f32::new(2.0,3.0);
-    /// let vector2 = Vec2f32::new(4.0,5.0);
+    /// use yavml::vec2::vec2f::Vec2f;
+    /// let vector1 = Vec2f::new(2.0,3.0);
+    /// let vector2 = Vec2f::new(4.0,5.0);
     /// assert_eq!(vector1.dot(vector2),23.0)
     /// ```
     pub fn dot(self, rhs: Self) -> f32 {
@@ -88,15 +88,15 @@ impl Vec2f32 {
     ///
     /// #Arguments
     ///
-    /// * `self` - The first `Vec2f32`
+    /// * `self` - The first `Vec2f`
     ///
-    /// * `rhs` - The Second `Vec2f32`
+    /// * `rhs` - The Second `Vec2f`
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2f32::Vec2f32;
-    /// let vector1 = Vec2f32::new(2.0,3.0);
-    /// let vector2 = Vec2f32::new(4.0,5.0);
+    /// use yavml::vec2::vec2f::Vec2f;
+    /// let vector1 = Vec2f::new(2.0,3.0);
+    /// let vector2 = Vec2f::new(4.0,5.0);
     /// assert_eq!(vector1.cross(vector2),-2.0)
     pub fn cross(self, rhs: Self) -> f32 {
         self.x * rhs.y - self.y * rhs.x
@@ -119,7 +119,7 @@ impl Vec2f32 {
 }
 
 /// Addition of vectors
-impl Add<Vec2f32> for Vec2f32 {
+impl Add<Vec2f> for Vec2f {
     type Output = Self;
 
     fn add(self, rhs: Self) -> Self::Output {
@@ -131,7 +131,7 @@ impl Add<Vec2f32> for Vec2f32 {
 }
 
 ///Addition Assignments of vectors
-impl AddAssign<Vec2f32> for Vec2f32 {
+impl AddAssign<Vec2f> for Vec2f {
     fn add_assign(&mut self, rhs: Self) {
         self.x += rhs.x;
         self.y += rhs.y;
@@ -139,7 +139,7 @@ impl AddAssign<Vec2f32> for Vec2f32 {
 }
 
 /// Subtraction of vectors
-impl Sub<Vec2f32> for Vec2f32 {
+impl Sub<Vec2f> for Vec2f {
     type Output = Self;
 
     fn sub(self, rhs: Self) -> Self::Output {
@@ -150,15 +150,15 @@ impl Sub<Vec2f32> for Vec2f32 {
     }
 }
 /// Subtraction Assignments of vectors
-impl SubAssign<Vec2f32> for Vec2f32 {
-    fn sub_assign(&mut self, rhs: Vec2f32) {
+impl SubAssign<Vec2f> for Vec2f {
+    fn sub_assign(&mut self, rhs: Vec2f) {
         self.x -= rhs.x;
         self.y -= rhs.y;
     }
 }
 
 /// Multiplication of vectors
-impl Mul<Vec2f32> for Vec2f32 {
+impl Mul<Vec2f> for Vec2f {
     type Output = Self;
 
     fn mul(self, rhs: Self) -> Self::Output {
@@ -170,7 +170,7 @@ impl Mul<Vec2f32> for Vec2f32 {
 }
 
 /// Multiplication of a vector by an `f32`
-impl Mul<f32> for Vec2f32 {
+impl Mul<f32> for Vec2f {
     type Output = Self;
 
     fn mul(self, rhs: f32) -> Self::Output {
@@ -181,7 +181,7 @@ impl Mul<f32> for Vec2f32 {
     }
 }
 /// Multiplication assignment of Vectors
-impl MulAssign<Vec2f32> for Vec2f32 {
+impl MulAssign<Vec2f> for Vec2f {
     fn mul_assign(&mut self, rhs: Self) {
         self.x *= rhs.x;
         self.y *= rhs.y;
@@ -189,7 +189,7 @@ impl MulAssign<Vec2f32> for Vec2f32 {
 }
 
 /// Multiplication assignment of a vector by an `f32`
-impl MulAssign<f32> for Vec2f32 {
+impl MulAssign<f32> for Vec2f {
     fn mul_assign(&mut self, rhs: f32) {
         self.x *= rhs;
         self.y *= rhs;
@@ -197,9 +197,9 @@ impl MulAssign<f32> for Vec2f32 {
 }
 
 /// Division of a vector
-impl Div<Vec2f32> for Vec2f32 {
+impl Div<Vec2f> for Vec2f {
     type Output = Self;
-    fn div(self, rhs: Vec2f32) -> Self::Output {
+    fn div(self, rhs: Vec2f) -> Self::Output {
         Self {
             x: self.x / rhs.x,
             y: self.y / rhs.y,
@@ -207,7 +207,7 @@ impl Div<Vec2f32> for Vec2f32 {
     }
 }
 /// Division of a vector by an `f32`
-impl Div<f32> for Vec2f32 {
+impl Div<f32> for Vec2f {
     type Output = Self;
     fn div(self, rhs: f32) -> Self::Output {
         Self {
@@ -217,14 +217,14 @@ impl Div<f32> for Vec2f32 {
     }
 }
 
-impl DivAssign<Vec2f32> for Vec2f32 {
-    fn div_assign(&mut self, rhs: Vec2f32) {
+impl DivAssign<Vec2f> for Vec2f {
+    fn div_assign(&mut self, rhs: Vec2f) {
         self.x /= rhs.x;
         self.y /= rhs.y;
     }
 }
 
-impl DivAssign<f32> for Vec2f32 {
+impl DivAssign<f32> for Vec2f {
     fn div_assign(&mut self, rhs: f32) {
         self.x /= rhs;
         self.y /= rhs;

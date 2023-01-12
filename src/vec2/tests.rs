@@ -1,9 +1,7 @@
-mod tests {
-    use super::super::*;
-
+    use super::{vec2i};
     mod vec2i_tests {
 
-        use super::vec2i::*;
+        use super::vec2i::Vec2i;
 
         /// Tests creating a new `Vec2i`
         #[test]
@@ -148,8 +146,3 @@ mod tests {
             let _ = vector / 0;
         }
     }
-
-    mod vec2f_tests {
-        // use super::vec2f32::Vec2f32;
-    }
-}

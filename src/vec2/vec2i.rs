@@ -1,6 +1,6 @@
 use core::ops::*;
 
-use super::vec2f::Vec2f32;
+use super::vec2f::Vec2f;
 /// An integer-holding vector with 2 values
 #[derive(Clone, Copy, Default, Debug, PartialEq)]
 pub struct Vec2i {
@@ -68,9 +68,9 @@ impl Vec2i {
         [self.x, self.y]
     }
 
-    /// Convert a `Vec2i` vector to a `Vec2f32` floating-point vector
-    pub const fn to_vec2_f32(&self) -> Vec2f32 {
-        Vec2f32 {
+    /// Convert a `Vec2i` vector to a `Vec2f` floating-point vector
+    pub const fn to_vec2f(&self) -> Vec2f {
+        Vec2f {
             x: self.x as f32,
             y: self.y as f32,
         }
