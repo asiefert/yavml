@@ -9,9 +9,21 @@ pub struct Vec2i {
 }
 
 impl Vec2i {
-    pub const ZERO: Vec2i = Vec2i::splat(0);
-    pub const ONE: Vec2i = Vec2i::splat(1);
-    pub const NEG_ONE: Vec2i = Vec2i::splat(-1);
+    /// Vector of all zeros
+    pub const ZERO: Self = Self::splat(0);
+    /// Vector of all ones
+    pub const ONE: Self = Self::splat(1);
+    /// Vector of all negative ones
+    pub const NEG_ONE: Self = Self::splat(-1);
+
+    /// A unit vector pointing along positive x
+    pub const U_X: Self = Self::new(1, 0);
+    /// A unit vector pointing along positive y
+    pub const U_Y: Self = Self::new(0, 1);
+    /// A unit vector pointing along negative x
+    pub const U_NX: Self = Self::new(1, 0);
+    /// A unit vector pointing along negative y
+    pub const U_NY: Self = Self::new(0, 1);
 
     /// Creates a new vector
     /// # Arguments
