@@ -7,16 +7,14 @@ mod tests {
 
         /// Tests creating a new `Vec2i`
         #[test]
-        fn test_vec2i_create_new() {
-            let vector = Vec2i::new(1, 1);
-            assert_eq!(vector, Vec2i::ONE);
+        fn test_vec2i_new() {
+            assert_eq!(Vec2i {x: 1, y: 1}, Vec2i::ONE);
         }
 
         /// Tests creating a `Vec2i` with all values splatted to 0
         #[test]
-        fn test_vec2i_create_new_splatted() {
-            let vector = Vec2i::splat(0);
-            assert_eq!(vector, Vec2i::ZERO)
+        fn test_vec2i_new_splatted() {
+            assert_eq!(Vec2i::splat(0), Vec2i::ZERO)
         }
 
         /// Tests calculating the dot product of two `Vec2i`
@@ -33,6 +31,21 @@ mod tests {
             let vec1 = Vec2i::new(7, 8);
             let vec2 = Vec2i::new(5, 8);
             assert_eq!(vec1.cross(vec2), 16)
+        }
+
+        /// Tests calculating the length of a vector
+        #[test]
+        fn test_vec2i_length() {
+            assert_eq!(Vec2i {x:3, y:4}.length(), 5.0);
+        }
+
+        /// Tests setting x and y of a vector to new values
+        #[test]
+        fn test_vec2i_set() {
+            let mut vec = Vec2i::new(1,2);
+            vec.set(2, 3);
+            assert_eq!(vec,Vec2i::new(2, 3));
+
         }
 
         /// Tests the addition operator for `Vec2i`
@@ -102,7 +115,6 @@ mod tests {
         }
 
         /// Tests the division assignment operator for `Vec2i`
-
         #[test]
         fn test_vec2i_division_assignment() {
             let mut vec1 = Vec2i::new(6, 6);
@@ -138,5 +150,7 @@ mod tests {
         }
     }
 
-    mod vec2f_tests {}
+    mod vec2f_tests {
+        // use super::vec2f32::Vec2f32;
+    }
 }

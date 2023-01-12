@@ -1,4 +1,6 @@
 use core::ops::*;
+
+use super::vec2f32::Vec2f32;
 /// An integer-holding vector with 2 values
 #[derive(Clone, Copy, Default, Debug, PartialEq)]
 pub struct Vec2i {
@@ -9,21 +11,9 @@ pub struct Vec2i {
 }
 
 impl Vec2i {
-    /// Vector of all zeros
-    pub const ZERO: Self = Self::splat(0);
-    /// Vector of all ones
-    pub const ONE: Self = Self::splat(1);
-    /// Vector of all negative ones
-    pub const NEG_ONE: Self = Self::splat(-1);
-
-    /// A unit vector pointing along positive x
-    pub const U_X: Self = Self::new(1, 0);
-    /// A unit vector pointing along positive y
-    pub const U_Y: Self = Self::new(0, 1);
-    /// A unit vector pointing along negative x
-    pub const U_NX: Self = Self::new(1, 0);
-    /// A unit vector pointing along negative y
-    pub const U_NY: Self = Self::new(0, 1);
+    pub const ZERO: Vec2i = Vec2i::splat(0);
+    pub const ONE: Vec2i = Vec2i::splat(1);
+    pub const NEG_ONE: Vec2i = Vec2i::splat(-1);
 
     /// Creates a new vector
     /// # Arguments
@@ -55,6 +45,20 @@ impl Vec2i {
     /// ```
     pub const fn splat(val: i32) -> Self {
         Self { x: val, y: val }
+    }
+    /// Create a new Vector from an 2 item-length array
+    pub const fn from_arr(arr: [i32; 2]) -> Self{
+        Self::new(arr[0],arr[1])
+    }
+
+    /// Create an array from a Vector's `x` and `y` values
+    pub const fn to_array(&self) -> [i32;2] {
+        [self.x,self.y]
+    }
+
+    /// Convert a `Vec2i` vector to a `Vec2f32` floating-point vector
+    pub const fn to_vec2_f32(&self) -> Vec2f32{
+        Vec2f32 { x: self.x as f32, y: self.y as f32 }
     }
     /// Returns the dot product of the `self` and `rhs`
     ///
@@ -94,9 +98,18 @@ impl Vec2i {
     }
 
     /// Sets the x and y value of a vector
-    pub fn set(mut self, new_x: i32, new_y: i32) {
+    /// 
+    /// #Arguments
+    /// 
+    /// * `self` - The Vector being set
+    pub fn set(&mut self, new_x: i32, new_y: i32) {
         self.x = new_x;
-        self.y = new_y
+        self.y = new_y;
+    }
+
+    /// Returns the length of the vector `self`
+    pub fn length(self) -> f64 {
+        ((self.dot(self)) as f64).sqrt()
     }
 }
 
