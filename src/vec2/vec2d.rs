@@ -1,14 +1,14 @@
 use core::ops::*;
 /// An integer-holding vector with 2 values
 #[derive(Clone, Copy, Default, Debug, PartialEq)]
-pub struct Vec2D {
+pub struct Vec2d {
     ///The x value of the vector
     pub x: f64,
     ///The y value of the vector
     pub y: f64,
 }
 
-impl Vec2D {
+impl Vec2d {
     /// Vector of all zeros
     pub const ZERO: Self = Self::splat(0.0);
     /// Vector of all ones
@@ -35,11 +35,11 @@ impl Vec2D {
     /// # Examples:
     ///
     /// ```
-    /// use yavml::vec2::vec2d::Vec2D;
-    /// let vector = Vec2D::new(1.0,1.0);
+    /// use yavml::vec2::vec2d::Vec2d;
+    /// let vector = Vec2d::new(1.0,1.0);
     /// ```
     pub const fn new(x: f64, y: f64) -> Self {
-        Vec2D { x, y }
+        Vec2d { x, y }
     }
     /// Creates a Vector with all elements set to `val`
     ///
@@ -49,9 +49,9 @@ impl Vec2D {
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2d::Vec2D;
-    /// let vector = Vec2D::splat(2.0);
-    /// assert_eq!(vector,Vec2D::new(2.0,2.0));
+    /// use yavml::vec2::vec2d::Vec2d;
+    /// let vector = Vec2d::splat(2.0);
+    /// assert_eq!(vector,Vec2d::new(2.0,2.0));
     /// ```
     pub const fn splat(val: f64) -> Self {
         Self { x: val, y: val }
@@ -69,15 +69,15 @@ impl Vec2D {
     ///
     /// # Arguments
     ///
-    /// * `self` - The first `Vec2D`
+    /// * `self` - The first `Vec2d`
     ///
-    /// * `rhs` - The second `Vec2D`
+    /// * `rhs` - The second `Vec2d`
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2d::Vec2D;
-    /// let vector1 = Vec2D::new(2.0,3.0);
-    /// let vector2 = Vec2D::new(4.0,5.0);
+    /// use yavml::vec2::vec2d::Vec2d;
+    /// let vector1 = Vec2d::new(2.0,3.0);
+    /// let vector2 = Vec2d::new(4.0,5.0);
     /// assert_eq!(vector1.dot(vector2),23.0)
     /// ```
     pub fn dot(self, rhs: Self) -> f64 {
@@ -88,15 +88,15 @@ impl Vec2D {
     ///
     /// #Arguments
     ///
-    /// * `self` - The first `Vec2D`
+    /// * `self` - The first `Vec2d`
     ///
-    /// * `rhs` - The Second `Vec2D`
+    /// * `rhs` - The Second `Vec2d`
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2d::Vec2D;
-    /// let vector1 = Vec2D::new(2.0,3.0);
-    /// let vector2 = Vec2D::new(4.0,5.0);
+    /// use yavml::vec2::vec2d::Vec2d;
+    /// let vector1 = Vec2d::new(2.0,3.0);
+    /// let vector2 = Vec2d::new(4.0,5.0);
     /// assert_eq!(vector1.cross(vector2),-2.0)
     pub fn cross(self, rhs: Self) -> f64 {
         self.x * rhs.y - self.y * rhs.x
@@ -119,7 +119,7 @@ impl Vec2D {
 }
 
 /// Addition of vectors
-impl Add<Vec2D> for Vec2D {
+impl Add<Vec2d> for Vec2d {
     type Output = Self;
 
     fn add(self, rhs: Self) -> Self::Output {
@@ -131,7 +131,7 @@ impl Add<Vec2D> for Vec2D {
 }
 
 ///Addition Assignments of vectors
-impl AddAssign<Vec2D> for Vec2D {
+impl AddAssign<Vec2d> for Vec2d {
     fn add_assign(&mut self, rhs: Self) {
         self.x += rhs.x;
         self.y += rhs.y;
@@ -139,7 +139,7 @@ impl AddAssign<Vec2D> for Vec2D {
 }
 
 /// Subtraction of vectors
-impl Sub<Vec2D> for Vec2D {
+impl Sub<Vec2d> for Vec2d {
     type Output = Self;
 
     fn sub(self, rhs: Self) -> Self::Output {
@@ -150,15 +150,15 @@ impl Sub<Vec2D> for Vec2D {
     }
 }
 /// Subtraction Assignments of vectors
-impl SubAssign<Vec2D> for Vec2D {
-    fn sub_assign(&mut self, rhs: Vec2D) {
+impl SubAssign<Vec2d> for Vec2d {
+    fn sub_assign(&mut self, rhs: Vec2d) {
         self.x -= rhs.x;
         self.y -= rhs.y;
     }
 }
 
 /// Multiplication of vectors
-impl Mul<Vec2D> for Vec2D {
+impl Mul<Vec2d> for Vec2d {
     type Output = Self;
 
     fn mul(self, rhs: Self) -> Self::Output {
@@ -170,7 +170,7 @@ impl Mul<Vec2D> for Vec2D {
 }
 
 /// Multiplication of a vector by an `f64`
-impl Mul<f64> for Vec2D {
+impl Mul<f64> for Vec2d {
     type Output = Self;
 
     fn mul(self, rhs: f64) -> Self::Output {
@@ -181,7 +181,7 @@ impl Mul<f64> for Vec2D {
     }
 }
 /// Multiplication assignment of Vectors
-impl MulAssign<Vec2D> for Vec2D {
+impl MulAssign<Vec2d> for Vec2d {
     fn mul_assign(&mut self, rhs: Self) {
         self.x *= rhs.x;
         self.y *= rhs.y;
@@ -189,7 +189,7 @@ impl MulAssign<Vec2D> for Vec2D {
 }
 
 /// Multiplication assignment of a vector by an `f64`
-impl MulAssign<f64> for Vec2D {
+impl MulAssign<f64> for Vec2d {
     fn mul_assign(&mut self, rhs: f64) {
         self.x *= rhs;
         self.y *= rhs;
@@ -197,9 +197,9 @@ impl MulAssign<f64> for Vec2D {
 }
 
 /// Division of a vector
-impl Div<Vec2D> for Vec2D {
+impl Div<Vec2d> for Vec2d {
     type Output = Self;
-    fn div(self, rhs: Vec2D) -> Self::Output {
+    fn div(self, rhs: Vec2d) -> Self::Output {
         Self {
             x: self.x / rhs.x,
             y: self.y / rhs.y,
@@ -207,7 +207,7 @@ impl Div<Vec2D> for Vec2D {
     }
 }
 /// Division of a vector by an `f64`
-impl Div<f64> for Vec2D {
+impl Div<f64> for Vec2d {
     type Output = Self;
     fn div(self, rhs: f64) -> Self::Output {
         Self {
@@ -217,14 +217,14 @@ impl Div<f64> for Vec2D {
     }
 }
 
-impl DivAssign<Vec2D> for Vec2D {
-    fn div_assign(&mut self, rhs: Vec2D) {
+impl DivAssign<Vec2d> for Vec2d {
+    fn div_assign(&mut self, rhs: Vec2d) {
         self.x /= rhs.x;
         self.y /= rhs.y;
     }
 }
 
-impl DivAssign<f64> for Vec2D {
+impl DivAssign<f64> for Vec2d {
     fn div_assign(&mut self, rhs: f64) {
         self.x /= rhs;
         self.y /= rhs;
