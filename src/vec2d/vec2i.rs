@@ -59,18 +59,21 @@ impl Vec2i {
         Self { x: val, y: val }
     }
     /// Create a new Vector from an 2 item-length array
-    pub const fn from_arr(arr: [i32; 2]) -> Self{
-        Self::new(arr[0],arr[1])
+    pub const fn from_arr(arr: [i32; 2]) -> Self {
+        Self::new(arr[0], arr[1])
     }
 
     /// Create an array from a Vector's `x` and `y` values
-    pub const fn to_array(&self) -> [i32;2] {
-        [self.x,self.y]
+    pub const fn to_array(&self) -> [i32; 2] {
+        [self.x, self.y]
     }
 
     /// Convert a `Vec2i` vector to a `Vec2f32` floating-point vector
-    pub const fn to_vec2_f32(&self) -> Vec2f32{
-        Vec2f32 { x: self.x as f32, y: self.y as f32 }
+    pub const fn to_vec2_f32(&self) -> Vec2f32 {
+        Vec2f32 {
+            x: self.x as f32,
+            y: self.y as f32,
+        }
     }
     /// Returns the dot product of the `self` and `rhs`
     ///
@@ -110,9 +113,9 @@ impl Vec2i {
     }
 
     /// Sets the x and y value of a vector
-    /// 
+    ///
     /// #Arguments
-    /// 
+    ///
     /// * `self` - The Vector being set
     pub fn set(&mut self, new_x: i32, new_y: i32) {
         self.x = new_x;
