@@ -8,7 +8,7 @@ mod tests {
         /// Tests creating a new `Vec2i`
         #[test]
         fn test_vec2i_new() {
-            assert_eq!(Vec2i {x: 1, y: 1}, Vec2i::ONE);
+            assert_eq!(Vec2i { x: 1, y: 1 }, Vec2i::ONE);
         }
 
         /// Tests creating a `Vec2i` with all values splatted to 0
@@ -36,16 +36,15 @@ mod tests {
         /// Tests calculating the length of a vector
         #[test]
         fn test_vec2i_length() {
-            assert_eq!(Vec2i {x:3, y:4}.length(), 5.0);
+            assert_eq!(Vec2i { x: 3, y: 4 }.length(), 5.0);
         }
 
         /// Tests setting x and y of a vector to new values
         #[test]
         fn test_vec2i_set() {
-            let mut vec = Vec2i::new(1,2);
+            let mut vec = Vec2i::new(1, 2);
             vec.set(2, 3);
-            assert_eq!(vec,Vec2i::new(2, 3));
-
+            assert_eq!(vec, Vec2i::new(2, 3));
         }
 
         /// Tests the addition operator for `Vec2i`
@@ -137,7 +136,7 @@ mod tests {
         #[should_panic(expected = "attempt to divide by zero")]
         fn test_vec2i_panic_on_div_by_zero() {
             let vec1 = Vec2i::new(1, 1);
-            let vec2 = Vec2i::new(0,0);
+            let vec2 = Vec2i::new(0, 0);
             let _ = vec1 / vec2;
         }
 
