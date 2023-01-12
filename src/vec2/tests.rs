@@ -1,4 +1,3 @@
-
 use super::vec2i;
 mod vec2i_tests {
 
