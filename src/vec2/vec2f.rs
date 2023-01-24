@@ -1,4 +1,7 @@
 use core::ops::*;
+
+use super::vec2d::Vec2d;
+use super::vec2i::Vec2i;
 /// An integer-holding vector with 2 values
 #[derive(Clone, Copy, Default, Debug, PartialEq)]
 pub struct Vec2f {
@@ -39,7 +42,7 @@ impl Vec2f {
     /// let vector = Vec2f::new(1.0,1.0);
     /// ```
     pub const fn new(x: f32, y: f32) -> Self {
-        Vec2f { x, y }
+        Self { x, y }
     }
     /// Creates a Vector with all elements set to `val`
     ///
@@ -54,7 +57,7 @@ impl Vec2f {
     /// assert_eq!(vector,Vec2f::new(2.0,2.0));
     /// ```
     pub const fn splat(val: f32) -> Self {
-        Self { x: val, y: val }
+        Self::new(val, val)
     }
     /// Create a new Vector from an 2 item-length array
     pub const fn from_arr(arr: [f32; 2]) -> Self {
@@ -64,6 +67,14 @@ impl Vec2f {
     /// Create an array from a Vector's `x` and `y` values
     pub const fn to_array(&self) -> [f32; 2] {
         [self.x, self.y]
+    }
+
+    pub const fn as_vec2i(&self) -> Vec2i {
+        todo!()
+    }
+
+    pub const fn as_vec2d(&self) -> Vec2d {
+        todo!()
     }
     /// Returns the dot product of the `self` and `rhs`
     ///
@@ -123,10 +134,7 @@ impl Add<Vec2f> for Vec2f {
     type Output = Self;
 
     fn add(self, rhs: Self) -> Self::Output {
-        Self {
-            x: self.x + rhs.x,
-            y: self.y + rhs.y,
-        }
+        Self::new(self.x + rhs.x, self.y + rhs.y)
     }
 }
 
@@ -143,10 +151,7 @@ impl Sub<Vec2f> for Vec2f {
     type Output = Self;
 
     fn sub(self, rhs: Self) -> Self::Output {
-        Self {
-            x: self.x - rhs.x,
-            y: self.y - rhs.y,
-        }
+        Self::new(self.x - rhs.x, self.y - rhs.y)
     }
 }
 /// Subtraction Assignments of vectors
@@ -162,10 +167,7 @@ impl Mul<Vec2f> for Vec2f {
     type Output = Self;
 
     fn mul(self, rhs: Self) -> Self::Output {
-        Self {
-            x: self.x * rhs.x,
-            y: self.y * rhs.y,
-        }
+        Self::new(self.x * rhs.x, self.y * rhs.y)
     }
 }
 
@@ -174,10 +176,7 @@ impl Mul<f32> for Vec2f {
     type Output = Self;
 
     fn mul(self, rhs: f32) -> Self::Output {
-        Self {
-            x: self.x * rhs,
-            y: self.y * rhs,
-        }
+        Self::new(self.x * rhs, self.y * rhs)
     }
 }
 /// Multiplication assignment of Vectors
@@ -200,20 +199,14 @@ impl MulAssign<f32> for Vec2f {
 impl Div<Vec2f> for Vec2f {
     type Output = Self;
     fn div(self, rhs: Vec2f) -> Self::Output {
-        Self {
-            x: self.x / rhs.x,
-            y: self.y / rhs.y,
-        }
+        Self::new(self.x / rhs.x, self.y / rhs.y)
     }
 }
 /// Division of a vector by an `f32`
 impl Div<f32> for Vec2f {
     type Output = Self;
     fn div(self, rhs: f32) -> Self::Output {
-        Self {
-            x: self.x / rhs,
-            y: self.y / rhs,
-        }
+        Self::new(self.x / rhs, self.y / rhs)
     }
 }
 

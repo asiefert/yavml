@@ -39,7 +39,7 @@ impl Vec2d {
     /// let vector = Vec2d::new(1.0,1.0);
     /// ```
     pub const fn new(x: f64, y: f64) -> Self {
-        Vec2d { x, y }
+        Self { x, y }
     }
     /// Creates a Vector with all elements set to `val`
     ///
@@ -54,7 +54,7 @@ impl Vec2d {
     /// assert_eq!(vector,Vec2d::new(2.0,2.0));
     /// ```
     pub const fn splat(val: f64) -> Self {
-        Self { x: val, y: val }
+        Self::new(val, val)
     }
     /// Create a new Vector from an 2 item-length array
     pub const fn from_arr(arr: [f64; 2]) -> Self {
@@ -123,10 +123,7 @@ impl Add<Vec2d> for Vec2d {
     type Output = Self;
 
     fn add(self, rhs: Self) -> Self::Output {
-        Self {
-            x: self.x + rhs.x,
-            y: self.y + rhs.y,
-        }
+        Self::new(self.x + rhs.x, self.y + rhs.y)
     }
 }
 
@@ -143,10 +140,7 @@ impl Sub<Vec2d> for Vec2d {
     type Output = Self;
 
     fn sub(self, rhs: Self) -> Self::Output {
-        Self {
-            x: self.x - rhs.x,
-            y: self.y - rhs.y,
-        }
+        Self::new(self.x - rhs.x, self.y - rhs.y)
     }
 }
 /// Subtraction Assignments of vectors
@@ -162,10 +156,7 @@ impl Mul<Vec2d> for Vec2d {
     type Output = Self;
 
     fn mul(self, rhs: Self) -> Self::Output {
-        Self {
-            x: self.x * rhs.x,
-            y: self.y * rhs.y,
-        }
+        Self::new(self.x * rhs.x, self.y * rhs.y)
     }
 }
 
@@ -174,10 +165,7 @@ impl Mul<f64> for Vec2d {
     type Output = Self;
 
     fn mul(self, rhs: f64) -> Self::Output {
-        Self {
-            x: self.x * rhs,
-            y: self.y * rhs,
-        }
+        Self::new(self.x * rhs, self.y * rhs)
     }
 }
 /// Multiplication assignment of Vectors
@@ -200,20 +188,14 @@ impl MulAssign<f64> for Vec2d {
 impl Div<Vec2d> for Vec2d {
     type Output = Self;
     fn div(self, rhs: Vec2d) -> Self::Output {
-        Self {
-            x: self.x / rhs.x,
-            y: self.y / rhs.y,
-        }
+        Self::new(self.x / rhs.x, self.y / rhs.y)
     }
 }
 /// Division of a vector by an `f64`
 impl Div<f64> for Vec2d {
     type Output = Self;
     fn div(self, rhs: f64) -> Self::Output {
-        Self {
-            x: self.x / rhs,
-            y: self.y / rhs,
-        }
+        Self::new(self.x / rhs, self.y / rhs)
     }
 }
 
