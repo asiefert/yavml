@@ -385,13 +385,19 @@ mod vec2d_tests {
     // Tests converting a `Vec2d` to `Vec2i`
     #[test]
     fn test_vec2d_as_vec2i() {
-        assert_eq!(Vec2f::new(6.21999979019165, 7.21999979019165).as_vec2i(), Vec2i { x: 6, y: 7 })
+        assert_eq!(
+            Vec2f::new(6.21999979019165, 7.21999979019165).as_vec2i(),
+            Vec2i { x: 6, y: 7 }
+        )
     }
 
     // Tests converting a `Vec2d` to `Vec2f`
     #[test]
     fn test_vec2d_as_vec2f() {
-        assert_eq!(Vec2d::new(6.21999979019165, 7.21999979019165).as_vec2f(), Vec2f { x: 6.22, y: 7.22 })
+        assert_eq!(
+            Vec2d::new(6.21999979019165, 7.21999979019165).as_vec2f(),
+            Vec2f { x: 6.22, y: 7.22 }
+        )
     }
 
     // Tests calculating the dot product of two `Vec2d`
