@@ -1,7 +1,6 @@
 use core::ops::*;
 
-use super::vec2d::Vec2d;
-use super::vec2i::Vec2i;
+use super::{vec2d::Vec2d, vec2i::Vec2i};
 /// An integer-holding vector with 2 values
 #[derive(Clone, Copy, Default, Debug, PartialEq)]
 pub struct Vec2f {
@@ -69,12 +68,27 @@ impl Vec2f {
         [self.x, self.y]
     }
 
-    pub const fn as_vec2i(&self) -> Vec2i {
-        todo!()
-    }
-
+    /// Cast a `Vec2f` floating-point vector as a `Vec2d` double floating-point vector
+    ///
+    /// # Examples:
+    /// ```
+    /// use yavml::vec2::vec2f::Vec2f;
+    /// use yavml::vec2::vec2d::Vec2d;
+    /// assert_eq!(Vec2f::new(6.22,7.22).as_vec2d(),Vec2d{x: 6.21999979019165, y: 7.21999979019165})
+    /// ```
     pub const fn as_vec2d(&self) -> Vec2d {
-        todo!()
+        Vec2d::new(self.x as f64, self.y as f64)
+    }
+    /// Cast a `Vec2f` floating-point vector as a `Vec2i` integer vector
+    ///
+    /// # Examples:
+    /// ```
+    /// use yavml::vec2::vec2f::Vec2f;
+    /// use yavml::vec2::vec2i::Vec2i;
+    /// assert_eq!(Vec2f::new(6.22,7.22).as_vec2i(),Vec2i{x: 6, y: 7})
+    /// ```
+    pub const fn as_vec2i(&self) -> Vec2i {
+        Vec2i::new(self.x as i32, self.y as i32)
     }
     /// Returns the dot product of the `self` and `rhs`
     ///
