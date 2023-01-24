@@ -1,3 +1,9 @@
-/target
+#Files created by OSes or Desktop Environments that should be ignored
 .DS_Store
+desktop.ini
+.Trash-#
+.directory
+
+#Project related folders and files that should be ignored
+/target
 Cargo.lock

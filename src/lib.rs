@@ -1,3 +1,3 @@
-pub mod vec2d;
-pub mod vec3d;
-pub mod vec4d;
+pub mod vec2;
+pub mod vec3;
+pub mod vec4;
