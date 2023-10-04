@@ -1,11 +1,7 @@
-use super::vec2d::Vec2d;
-use super::vec2f::Vec2f;
-use super::vec2i::Vec2i;
+use super::Vec2d;
+use super::Vec2f;
+use super::Vec2i;
 mod vec2i_tests {
-
-    use super::Vec2d;
-    use super::Vec2f;
-    use super::Vec2i;
 
     // Tests creating a new `Vec2i`
     #[test]

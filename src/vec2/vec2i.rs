@@ -37,7 +37,7 @@ impl Vec2i {
     /// # Examples:
     ///
     /// ```
-    /// use yavml::vec2::vec2i::Vec2i;
+    /// use yavml::vec2::Vec2i;
     /// let vector = Vec2i::new(1,1);
     /// ```
     pub const fn new(x: i32, y: i32) -> Self {
@@ -51,7 +51,7 @@ impl Vec2i {
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2i::Vec2i;
+    /// use yavml::vec2::Vec2i;
     /// let vector = Vec2i::splat(2);
     /// assert_eq!(vector,Vec2i::new(2,2));
     /// ```
@@ -72,8 +72,8 @@ impl Vec2i {
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2i::Vec2i;
-    /// use yavml::vec2::vec2f::Vec2f;
+    /// use yavml::vec2::Vec2i;
+    /// use yavml::vec2::Vec2f;
     /// assert_eq!(Vec2i::new(6,7).as_vec2f(),Vec2f{x: 6.0, y: 7.0})
 
     /// ```
@@ -84,8 +84,8 @@ impl Vec2i {
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2i::Vec2i;
-    /// use yavml::vec2::vec2d::Vec2d;
+    /// use yavml::vec2::Vec2i;
+    /// use yavml::vec2::Vec2d;
     /// assert_eq!(Vec2i::new(6,7).as_vec2d(),Vec2d{x: 6.0, y: 7.0})
     /// ```
     pub const fn as_vec2d(&self) -> Vec2d {
@@ -101,7 +101,7 @@ impl Vec2i {
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2i::Vec2i;
+    /// use yavml::vec2::Vec2i;
     /// let vector1 = Vec2i::new(2,3);
     /// let vector2 = Vec2i::new(4,5);
     /// assert_eq!(vector1.dot(vector2),23)
@@ -120,7 +120,7 @@ impl Vec2i {
     ///
     /// # Examples:
     /// ```
-    /// use yavml::vec2::vec2i::Vec2i;
+    /// use yavml::vec2::Vec2i;
     /// let vector1 = Vec2i::new(2,3);
     /// let vector2 = Vec2i::new(4,5);
     /// assert_eq!(vector1.cross(vector2),-2)
